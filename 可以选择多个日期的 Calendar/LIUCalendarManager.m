@@ -39,6 +39,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.isMultySelect = NO;
+        self.isContinuousSelection = NO;
     }
     return self;
 }
@@ -88,20 +89,116 @@
 #pragma --mark 广播
 - (void)didSelectDateNotification:(NSNotification *)notification {
     
-    if (!self.isMultySelect) {
-        [self.didSelectDate removeAllObjects];
+    /**
+     *  @author 刘俊, 15-08-07
+     *
+     *  2个日期选择 则中间的也必须选择
+     */
+    if (self.isContinuousSelection) {
+        if (self.didSelectDate.count>0) {
+            //1.得到早得日期
+            NSDate *date =  [self getTheEarlyDateFromDidSelectDate:self.didSelectDate];
+            //2.得到当前选择的日期
+            NSDate *currentDate = notification.userInfo[@"date"];
+            //3.添加2个日期中间的所有日期
+            [self addIntermediateDateWithDate:date OtherDate:currentDate];
+        }else{
+            [self.didSelectDate addObject:notification.userInfo[@"date"]];
+        }
+    }else {
+        
+        if (self.isMultySelect == NO) {
+            [self.didSelectDate removeAllObjects];
+        }
+        //这里数组只管加
+        [self.didSelectDate addObject:notification.userInfo[@"date"]];
     }
-    
-    //这里数组只管加
-    [self.didSelectDate addObject:notification.userInfo[@"date"]];
-    
+    [self loadContenDate];
 }
 
 - (void)cancleSelectDateNotification:(NSNotification *)notification {
     
-    //这里数组只管减 当然考虑代码健壮性还要判断一下的
-    [self.didSelectDate removeObject:notification.userInfo[@"date"]];
+    if (self.isContinuousSelection) {
+        
+        if (self.didSelectDate.count>0) {
+            //1.得到早得日期
+            NSDate *date =  [self getTheEarlyDateFromDidSelectDate:self.didSelectDate];
+            //2.得到当前选择的日期
+            NSDate *currentDate = notification.userInfo[@"date"];
+            //3.添加2个日期中间的所有日期
+            [self addIntermediateDateWithDate:date OtherDate:currentDate];
+        }else{
+            [self.didSelectDate removeObject:notification.userInfo[@"date"]];
+        }
+    }
+    else {
+        //这里数组只管减 当然考虑代码健壮性还要判断一下的
+        [self.didSelectDate removeObject:notification.userInfo[@"date"]];
+    }
+    [self loadContenDate];
+}
+
+/**
+ *  @author 刘俊, 15-08-07
+ *
+ *  获取数组中最早的日期
+ */
+- (NSDate *)getTheEarlyDateFromDidSelectDate:(NSMutableArray *)array {
     
+    NSDate *earlyDate = array[0];
+    if (array.count >= 1) {
+        for (NSDate *date in array) {
+            earlyDate = [date earlierDate:earlyDate];
+        }
+    }
+    return earlyDate;
+}
+
+/**
+ *  @author 刘俊, 15-08-12
+ *
+ *  获取最晚的日期
+ */
+- (NSDate *)getTheLateDateFromDidSelectDate:(NSMutableArray *)array {
+    
+    NSDate *lateDate = array[0];
+    if (array.count >= 1) {
+        for (NSDate *date in array) {
+            lateDate = [date laterDate:lateDate];
+        }
+    }
+    return lateDate;
+}
+
+
+/**
+ *  @author 刘俊, 15-08-07
+ *
+ *  添加2个日期中间的日期
+ */
+- (void)addIntermediateDateWithDate:(NSDate*)date OtherDate:(NSDate *)otherDate {
+    [self.didSelectDate removeAllObjects];
+    
+    if ([self theDate:date isEqualToAnotherDate:otherDate]) {
+        //如果2个日期相等 那么就添加一个就行了
+        [self.didSelectDate addObject:date];
+    }
+    else {
+        //如果不相等了
+        //1.获取2个日期中最早的日期
+        NSDate *earlyDate = [date earlierDate:otherDate];
+        NSDate *lateDate  = [date laterDate:otherDate];
+        NSTimeInterval dayInterval = 24*60*60;
+        [self.didSelectDate addObject:earlyDate];
+        //2.将最早的日期+1天，一直到与最后的日期相等就结束
+        NSDate *currentDate = [earlyDate dateByAddingTimeInterval:dayInterval];
+        while (![self theDate:currentDate isEqualToAnotherDate:lateDate]) {
+            [self.didSelectDate addObject:currentDate];
+            currentDate = [currentDate dateByAddingTimeInterval:dayInterval];
+        }
+        [self.didSelectDate addObject:currentDate];
+        NSLog(@"%@",self.didSelectDate);
+    }
 }
 
 /**
@@ -313,14 +410,60 @@
     }
 }
 
+- (NSString *)getTimeStrWithArray:(NSArray *)array {
+    
+    NSDate *earlyDate = [self getTheEarlyDateFromDidSelectDate:array.mutableCopy];
+    NSDate *lateDate = [self getTheLateDateFromDidSelectDate:array.mutableCopy];
+    NSString *earlyDateStr = [self getTotalStrWithDate:earlyDate WithOffSymbol:@"汉字"];
+    NSString *lateDateStr = [self getSubStrWithDate:lateDate];
+    
+    NSString *totalStr = [NSString stringWithFormat:@"%@-%@  共%lu天",earlyDateStr,lateDateStr,(unsigned long)array.count];
+    return totalStr;
+}
+
+- (NSString *)getTotalStrWithDate:(NSDate *)date WithOffSymbol:(NSString *)symbol {
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    if ([symbol isEqualToString:@"汉字"]) {
+        df.dateFormat = @"YYYY年MM月dd日";
+    }else {
+        df.dateFormat = [NSString stringWithFormat:@"YYYY%@MM%@dd",symbol,symbol];
+    }
+    return [df stringFromDate:date];
+}
+
+- (NSString *)getSubStrWithDate:(NSDate *)date {
+    NSString *str = [self getTotalStrWithDate:date WithOffSymbol:@"汉字"];
+    
+    return [str substringFromIndex:8];
+}
+
 - (void)dealloc {
     NSLog(@"dealloc执行了");
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectDateNotification:) name:@"LIUCanlendarDidSelectDateNotification" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"LIUCanlendarDidSelectDateNotification" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"LIUCanlendarCancleSelectDateNotification" object:nil];
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancleSelectDateNotification:) name:@"LIUCanlendarCancleSelectDateNotification" object:nil];
-    
-    
 }
 
+
+#pragma  --mark //2015-08-19 00:00:00 //获取2个时间段之间的间隔时间
+- (NSDate *)getDateWithDateStr:(NSString *)str {//2015-08-19 00:00:00
+    
+    NSDateFormatter *df = [NSDateFormatter new];
+    df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
+    return [df dateFromString:str];
+    
+}
+- (NSInteger)getOffDaysDate:(NSDate *)date OtherDate:(NSDate *)otherDate{//获取2个时间段之间的间隔时间
+    
+   NSDateComponents *components = [self.myCalendar components:NSCalendarUnitDay fromDate:date toDate:otherDate options:NSCalendarWrapComponents];
+    
+    return components.day+1;
+}
+
+- (NSInteger)getOffYearDate:(NSDate *)date OtherDate:(NSDate *)otherDate {
+    
+    NSDateComponents *components = [self.myCalendar components:NSCalendarUnitYear fromDate:date toDate:otherDate options:NSCalendarWrapComponents];
+    return components.year;
+}
 @end

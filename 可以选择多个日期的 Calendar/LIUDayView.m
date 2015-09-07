@@ -90,10 +90,11 @@
  *  已经被选择
  */
 - (void)didSelect {
-    self.dateLabel.backgroundColor = [UIColor greenColor];
+    self.dateLabel.backgroundColor = kThemeColor;
     self.dateLabel.textColor = [UIColor whiteColor];
-    self.dateLabel.layer.borderColor = [UIColor greenColor].CGColor;
+    self.dateLabel.layer.borderColor = kThemeColor.CGColor;
     self.dateLabel.alpha = 1;
+    NSLog(@"%@",self.date);
 }
 
 /**
@@ -103,7 +104,7 @@
 - (void)canSelect {
     self.dateLabel.backgroundColor = [UIColor clearColor];
     self.dateLabel.textColor = [UIColor blackColor];
-    self.dateLabel.layer.borderColor = [UIColor greenColor].CGColor;
+    self.dateLabel.layer.borderColor = kThemeColor.CGColor;
     self.dateLabel.alpha = 1;
 }
 
@@ -114,16 +115,21 @@
  */
 - (void)canNotSelect {
     self.dateLabel.backgroundColor = [UIColor clearColor];
-    self.dateLabel.textColor = [UIColor lightGrayColor];
-    self.dateLabel.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.dateLabel.textColor = kGrayTextColor;
+    self.dateLabel.layer.borderColor = [UIColor clearColor].CGColor;
     self.dateLabel.alpha = 1;
 }
 
+/**
+ *  @author 刘俊, 15-08-07
+ *
+ *  别的月份的日期
+ */
 - (void)isOtheMouth {
     self.dateLabel.backgroundColor = [UIColor clearColor];
     self.dateLabel.textColor = [UIColor lightGrayColor];
     self.dateLabel.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.dateLabel.alpha = 0.5;
+    self.dateLabel.alpha = 0.0;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -163,12 +169,12 @@
     }
     if (self.didSelect) {
         self.didSelect = NO;
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"LIUCanlendarCancleSelectDateNotification" object:nil userInfo:@{@"date":self.date}];
         [self canSelect];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"LIUCanlendarCancleSelectDateNotification" object:nil userInfo:@{@"date":self.date}];
     }else{
         self.didSelect = YES;
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"LIUCanlendarDidSelectDateNotification" object:nil userInfo:@{@"date":self.date}];
         [self didSelect];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"LIUCanlendarDidSelectDateNotification" object:nil userInfo:@{@"date":self.date}];
     }
 }
 

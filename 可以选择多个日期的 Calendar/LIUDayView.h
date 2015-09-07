@@ -6,6 +6,13 @@
 //  Copyright (c) 2015年 liujun. All rights reserved.
 //
 
+/**
+ *  @author 刘俊, 15-08-07
+ *
+ *  修改内容显示的配置，在.m文件中
+ *
+ */
+
 #import <UIKit/UIKit.h>
 
 @interface LIUDayView : UIView
