@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B72C5DD5-A0B0-4E44-BFDD-CEA6C095A329</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>72A9F114B83F7C6C4E42B017CAB7C2784EDC692F</key>
+		<string>https://github.com/codeliujun/Tool.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>picker/picker.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>72A9F114B83F7C6C4E42B017CAB7C2784EDC692F</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/codeliujun/Tool.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>72A9F114B83F7C6C4E42B017CAB7C2784EDC692F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>72A9F114B83F7C6C4E42B017CAB7C2784EDC692F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Tool</string>
+		</dict>
+	</array>
+</dict>
+</plist>
