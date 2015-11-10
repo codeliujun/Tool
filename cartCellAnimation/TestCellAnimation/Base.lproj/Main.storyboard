@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lTh-VC-DTg">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <scenes>
+        <!--Item-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pf0-0F-kSb">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Axn-2R-5FW"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="VZi-KV-tnj"/>
+                                </connections>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart" translatesAutoresizingMaskIntoConstraints="NO" id="WMW-ti-vgU">
+                                <rect key="frame" x="30" y="399" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lJu-Hk-lZF"/>
+                                    <constraint firstAttribute="width" constant="50" id="qNh-9m-rcj"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pf0-0F-kSb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="3hd-rh-b3E"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WMW-ti-vgU" secondAttribute="bottom" constant="70" id="F9R-7u-2O3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pf0-0F-kSb" secondAttribute="bottom" id="JBh-dL-vsH"/>
+                            <constraint firstAttribute="trailing" secondItem="pf0-0F-kSb" secondAttribute="trailing" id="MMP-Ga-sI3"/>
+                            <constraint firstItem="pf0-0F-kSb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="baf-du-G7T"/>
+                            <constraint firstItem="WMW-ti-vgU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="zuX-Iw-z7E"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="MoE-eq-Ur2"/>
+                    <connections>
+                        <outlet property="cartView" destination="WMW-ti-vgU" id="Ga6-lV-jky"/>
+                        <outlet property="tableView" destination="pf0-0F-kSb" id="5Li-kX-KlJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="672" y="232"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="mXf-IL-a2J">
+            <objects>
+                <viewController id="yGc-I4-Kwp" customClass="AnimationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qaf-TY-b80"/>
+                        <viewControllerLayoutGuide type="bottom" id="taU-wh-KlQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gmQ-IV-dOu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wr-oy-FpX">
+                                <rect key="frame" x="34" y="37" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.21207259480000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="print:" destination="yGc-I4-Kwp" eventType="touchUpInside" id="Gg7-gB-Gcd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrK-Z1-1Yw">
+                                <rect key="frame" x="200" y="37" width="30" height="30"/>
+                                <state key="normal" title="star"/>
+                                <connections>
+                                    <action selector="starAnimation:" destination="yGc-I4-Kwp" eventType="touchUpInside" id="mEk-xN-hza"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ISz-tN-jxL">
+                                <rect key="frame" x="34" y="91" width="163" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="yGc-I4-Kwp" id="jf1-4F-W77"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2S2-gL-uSN">
+                                <rect key="frame" x="38" y="142" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.38040920439999998" green="0.97647058819999999" blue="0.43859593159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="taU-wh-KlQ" firstAttribute="top" secondItem="2S2-gL-uSN" secondAttribute="bottom" constant="356" id="9uZ-jP-vM0"/>
+                            <constraint firstItem="2S2-gL-uSN" firstAttribute="leading" secondItem="gmQ-IV-dOu" secondAttribute="leading" constant="38" id="JQr-7f-xdy"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="JYj-Xy-csn"/>
+                    <connections>
+                        <outlet property="button" destination="7wr-oy-FpX" id="qwK-Pf-XAV"/>
+                        <outlet property="label" destination="2S2-gL-uSN" id="tnk-Su-HAG"/>
+                        <outlet property="textField" destination="ISz-tN-jxL" id="cta-YY-ZoD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rkr-4g-cuf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="672" y="850"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Bd2-tz-MUG">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lTh-VC-DTg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="tmI-fF-Oir">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="qtp-Oj-Zgy"/>
+                        <segue destination="yGc-I4-Kwp" kind="relationship" relationship="viewControllers" id="LsI-ll-h74"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E5C-LD-k26" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="232"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cart" width="20" height="20"/>
+    </resources>
+</document>

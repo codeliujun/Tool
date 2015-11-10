@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>90FDEF5F-D7BF-44E4-B943-263CBC4DA509</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ZHTourist</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>238293FBAEF078B988C438CF2A40645BE6A9689A</key>
+		<string>zgit:repositories/zhtourist.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ZHTourist/ZHTourist.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>238293FBAEF078B988C438CF2A40645BE6A9689A</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>zgit:repositories/zhtourist.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>238293FBAEF078B988C438CF2A40645BE6A9689A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>238293FBAEF078B988C438CF2A40645BE6A9689A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>zhtourist</string>
+		</dict>
+	</array>
+</dict>
+</plist>

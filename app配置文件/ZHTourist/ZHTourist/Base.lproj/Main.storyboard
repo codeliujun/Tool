@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="piw-Ge-jh9">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="rnw-Ae-gae">
+            <objects>
+                <tabBarController id="piw-Ge-jh9" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="xE9-A6-YmO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <viewControllers>
+                        <viewController id="iEH-pb-9bv">
+                            <layoutGuides>
+                                <viewControllerLayoutGuide type="top" id="Emb-nN-j1h"/>
+                                <viewControllerLayoutGuide type="bottom" id="s7Z-ej-eao"/>
+                            </layoutGuides>
+                            <view key="view" contentMode="scaleToFill" id="klS-xm-uYg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <tabBarItem key="tabBarItem" title="Item 1" id="6HF-Hc-2iz"/>
+                        </viewController>
+                        <viewController id="Bab-bf-lbS">
+                            <layoutGuides>
+                                <viewControllerLayoutGuide type="top" id="peK-RW-Dri"/>
+                                <viewControllerLayoutGuide type="bottom" id="KTv-rv-3Dz"/>
+                            </layoutGuides>
+                            <view key="view" contentMode="scaleToFill" id="vci-cV-ZZH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <tabBarItem key="tabBarItem" title="Item 2" id="Xcj-Kt-B6b"/>
+                        </viewController>
+                    </viewControllers>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h8T-bB-nC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100.8" y="230.03999999999999"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
